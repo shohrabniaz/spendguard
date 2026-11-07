@@ -39,7 +39,7 @@ LLM-based second-opinion classifier for paraphrased injections; PayPal webhooks 
 python, paypal-orders-api, paypal-sandbox, groq, gpt-oss-120b
 
 ## Links
-- Repo: [TODO public GitHub URL, MIT licence visible in About]
+- Repo: https://github.com/shohrabniaz/spendguard
 - Video (<3 min, public YouTube): [TODO]
 
 ## Prize categories to tick
