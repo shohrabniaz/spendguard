@@ -52,7 +52,7 @@ Merchant ids starting with `demo-` are not sent as a payee (the order goes to yo
 
 ## Limitations (honest)
 - Injection detection is regex heuristics: it catches obvious attacks, not paraphrased ones. A second LLM-based classifier is future work.
-- Real sandbox verification on 8 Nov 2026 at 3:09am Adelaide (ACDT): credentials corrected; OAuth and Orders v2 order creation succeeded through the live Groq demo. Order `3PY92621TA0826924`, USD 24.99, status `CREATED`. Buyer approval and capture remain pending. The initial 17-test suite passed; the expanded 35-test suite now passes without those ResourceWarnings.
+- Real sandbox verification on 8 Nov 2026 at 3:09am Adelaide (ACDT): credentials corrected; OAuth and Orders v2 order creation succeeded through the live Groq demo. Order `3PY92621TA0826924`, USD 24.99, the sandbox buyer approved it, and it was captured via the API (capture `3UN54146N8562825X`, status `COMPLETED`). The initial 17-test suite passed; the expanded 35-test suite now passes without those ResourceWarnings.
 - Premature purchase wording is now prevented by deterministic status rendering. New checkout/capture paths are verified offline; a live approved sandbox capture is still pending.
 - History is read from the local log; a production version would use a shared store.
 
@@ -73,4 +73,4 @@ python3 demo.py --offline --capture MOCK-ORDER-ID --mock-approve --log /tmp/spen
 ```
 `--mock-approve` simulates buyer approval only for the offline client. Offline orders persist beside the selected log in `<log>.mock.json`, allowing separate create/capture invocations. Normal mock creation no longer auto-captures. `--approve` is policy-review approval, **not PayPal buyer approval**.
 
-Previously verified order `3PY92621TA0826924` remains awaiting buyer approval; no live payment/capture was performed during this update. If its old creation record is not in the selected log, the guarded CLI will refuse capture rather than invent an allow decision.
+Order `3PY92621TA0826924` was approved by the sandbox buyer and captured on 8 Nov 2026 (capture `3UN54146N8562825X`, `COMPLETED`). If its old creation record is not in the selected log, the guarded CLI will refuse capture rather than invent an allow decision.
